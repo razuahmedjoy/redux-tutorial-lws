@@ -6,6 +6,10 @@
     box-sizing: border-box;
     font-family: "Raleway", sans-serif;
 }
+.error{
+    color:red;
+    margin-top: 1rem;
+}
 
 .App {
     display: flex;
