@@ -8,9 +8,17 @@ export default function Form() {
     const [type, setType] = useState("");
     const [amount, setAmount] = useState("");
 
+    const [editMode,setEditMode] = useState(false);
+
     const dispatch = useDispatch();
 
-    const {transactions,isLoading,isError,error} = useSelector(state => state.transactions)
+    const {isLoading,isError,error} = useSelector(state => state.transactions)
+
+    const reset = () => {
+        setName("");
+        setType("");
+        setAmount("");
+    }
 
     const handleCreate = (e) => {
         e.preventDefault();
@@ -20,6 +28,7 @@ export default function Form() {
             amount: parseInt(amount)
         }
         dispatch(createTransaction(data));
+        reset();
 
     }
 
@@ -86,7 +95,10 @@ export default function Form() {
 
                 {!isLoading && isError && <p className="error">{error}</p>}
             </form>
-            <button className="btn cancel_edit">Cancel Edit</button>
+
+            {
+                editMode &&  <button className="btn cancel_edit">Cancel Edit</button>
+            }
         </div>
     );
 }

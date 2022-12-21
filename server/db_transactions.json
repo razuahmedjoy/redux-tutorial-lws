@@ -11,6 +11,24 @@
       "name": "Family Expenses",
       "type": "expense",
       "amount": 200000
+    },
+    {
+      "name": "sallery",
+      "type": "income",
+      "amount": 1000000,
+      "id": 3
+    },
+    {
+      "name": "tution",
+      "type": "income",
+      "amount": 50000,
+      "id": 4
+    },
+    {
+      "name": "college fee",
+      "type": "expense",
+      "amount": 50000,
+      "id": 5
     }
   ]
 }
