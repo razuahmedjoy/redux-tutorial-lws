@@ -7,12 +7,13 @@ import VideoGridItem from './VideoGridItem';
 const VideoGrid = () => {
     const dispatch = useDispatch();
     const { videos, loading, error, isError } = useSelector((state) => state.videos);
+    const {tags,searchText} = useSelector(state => state.filter);
 
     useEffect(() => {
 
-        dispatch(fetchVideos())
+        dispatch(fetchVideos({tags,searchText}))
 
-    }, [dispatch])
+    }, [dispatch,tags,searchText])
 
     // descide what to render
     let content;
@@ -24,11 +25,14 @@ const VideoGrid = () => {
      
         content = <div className="col-span-12">{error}</div>
     }
-
     if(!isError && !loading && videos.length > 0){
         content = videos.map((video) =>
         <VideoGridItem key={video.id} video={video} />)
     }
+    if(!isError && !loading && videos.length === 0){
+        content = <div className="col-span-12">No video found</div>
+    }
+
 
 
     return (
